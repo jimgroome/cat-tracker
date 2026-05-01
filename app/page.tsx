@@ -24,7 +24,7 @@ function getCatStatus(event?: CatEvent | null) {
   if (event.event === "out") {
     return {
       label: "Outside",
-      message: "The cat appears to be outside.",
+      message: "Baloo appears to be outside.",
       emoji: "🌳",
       bg: "bg-emerald-100",
       text: "text-emerald-900",
@@ -34,7 +34,7 @@ function getCatStatus(event?: CatEvent | null) {
   if (event.event === "in") {
     return {
       label: "Inside",
-      message: "The cat appears to be inside.",
+      message: "Baloo appears to be inside.",
       emoji: "🏠",
       bg: "bg-sky-100",
       text: "text-sky-900",
@@ -55,14 +55,11 @@ export default async function HomePage() {
   const status = getCatStatus(latestEvent);
 
   return (
-    <main className="min-h-screen bg-slate-950 px-6 py-10 text-white">
-      <div className="mx-auto flex max-w-xl flex-col items-center justify-center gap-8">
+    <main className="min-h-screen bg-slate-950 px-6 py-10 text-white flex flex-col">
+      <div className="mx-auto flex max-w-xl flex-col items-center justify-center gap-8 flex-1">
         <div className="text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
-            Cat flap tracker
-          </p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
-            Where is the cat?
+            Where is Baloo?
           </h1>
         </div>
 
@@ -77,8 +74,6 @@ export default async function HomePage() {
 
           {latestEvent && (
             <div className="mt-8 rounded-2xl bg-white/60 p-4 text-sm">
-              <p className="font-semibold">Latest event</p>
-              <p className="mt-1">{latestEvent.event.replace("_", " ")}</p>
               <p className="mt-1 opacity-75">
                 {new Date(latestEvent.timestamp).toLocaleString("en-GB", {
                   dateStyle: "medium",
@@ -89,12 +84,21 @@ export default async function HomePage() {
           )}
         </section>
 
-        <a
-          href="/recent"
-          className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
-        >
-          View recent events
-        </a>
+        <div className="flex items-center justify-center gap-4 mt-auto">
+          <a
+            href="/recent"
+            className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+          >
+            View recent events
+          </a>
+
+          <a
+            href="/override"
+            className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+          >
+            Override location
+          </a>
+        </div>
       </div>
     </main>
   );

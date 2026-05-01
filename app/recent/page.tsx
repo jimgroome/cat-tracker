@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CatEvent } from "../types";
 
 async function getRecentEvents(): Promise<CatEvent[]> {
@@ -34,20 +36,15 @@ export default async function EventsPage() {
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 flex items-center justify-between gap-4">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
-              Cat flap tracker
-            </p>
-            <h1 className="mt-3 text-4xl font-bold tracking-tight">
-              Recent events
-            </h1>
+            <h1 className="text-4xl font-bold tracking-tight">Recent events</h1>
           </div>
 
-          <a
+          <Link
             href="/"
             className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
           >
             Home
-          </a>
+          </Link>
         </div>
 
         {events.length === 0 ? (
