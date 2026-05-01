@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CatEvent } from "./types";
 
 async function getLatestEvent(): Promise<CatEvent | null> {
@@ -84,20 +86,20 @@ export default async function HomePage() {
           )}
         </section>
 
-        <div className="flex items-center justify-center gap-4 mt-auto">
-          <a
+        <div className="mt-auto flex items-center justify-center gap-4">
+          <Link
             href="/recent"
             className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
           >
             View recent events
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/override"
             className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
           >
             Override location
-          </a>
+          </Link>
         </div>
       </div>
     </main>
